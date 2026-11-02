@@ -38,7 +38,7 @@ public class TicketServiceTest {
             "Ticket should link to the correct event");
         assertEquals(customer.getId(), ticket.getCustomer().getId(),
             "Ticket should link to the correct customer");
-        assertEquals(5, concert.getAvailableSeats(),
+        assertEquals(9, concert.getAvailableSeats(),
             "Available seats should decrease by 1");
     }
 
@@ -65,7 +65,7 @@ public class TicketServiceTest {
     void testCancelTicketRestoresCapacity() {
         Ticket ticket = ticketService.buyTicket(concert, customer);
 
-        assertEquals(5, concert.getAvailableSeats(),
+        assertEquals(9, concert.getAvailableSeats(),
             "Should have 9 seats after purchase");
 
         ticketService.cancelTicket(ticket.getId());
