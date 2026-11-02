@@ -57,4 +57,17 @@ public class TicketService {
     public List<Ticket> getTicketsByCustomer(int customerId) {
         return ticketRepository.findByCustomerId(customerId);
     }
+
+
+    /**
+     * Возвращает все билеты, выданные на указанное мероприятие.
+     *
+     * Добавлено в рамках ЛР №4 (индивидуальное задание, вариант 9):
+     * раньше билеты можно было получить только по покупателю,
+     * а «билеты конкретного мероприятия» получить было нельзя —
+     * хотя в репозитории такой метод уже был (findByEventId).
+     */
+    public List<Ticket> getTicketsByEvent(int eventId) {
+        return ticketRepository.findByEventId(eventId);
+    }
 }
