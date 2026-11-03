@@ -10,34 +10,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * TicketEventQueryTest — ИНДИВИДУАЛЬНОЕ ЗАДАНИЕ ЛР №4, вариант 9.
- *
- * Вариант 9 — «Система продажи билетов»:
- *   «Добавить новый тест для работы с билетом или событием,
- *    продемонстрировать автоматический запуск Pipeline после изменения
- *    проекта».
- *
- * Этот класс проверяет работу сервиса с БИЛЕТАМИ и СОБЫТИЯМИ:
- *   - билет привязан ровно к одному мероприятию;
- *   - продажа билета на одно мероприятие не влияет на другое;
- *   - отмена билета возвращает места только в его мероприятии;
- *   - новый метод TicketService.getTicketsByEvent() отбирает билеты
- *     по мероприятию;
- *   - инвариант 0 &lt;= availableSeats &lt;= totalSeats не нарушается.
- *
- * Файл добавлен в ЛР №4 и зафиксирован в Git-репозитории:
- *   git add .  ->  git commit -m "Add TicketEventQueryTest (variant 9)"
- *   ->  git push  ->  Jenkins (Poll SCM)  ->  стадия Test
- */
+
 public class TicketEventQueryTest {
 
     private TicketService ticketService;
     private EventRepository eventRepo;
     private TicketRepository ticketRepo;
 
-    private Event rockConcert;   // мероприятие №1
-    private Event jazzNight;      // мероприятие №2
+    private Event rockConcert;
+    private Event jazzNight;
     private Customer ivan;
     private Customer anna;
 
@@ -82,9 +63,9 @@ public class TicketEventQueryTest {
     void testBuyingTicketDoesNotAffectOtherEvent() {
         ticketService.buyTicket(rockConcert, ivan);
 
-        assertEquals(9, rockConcert.getAvailableSeats(),
+        assertEquals(8, rockConcert.getAvailableSeats(),
             "Rock Concert should lose one seat");
-        assertEquals(4, jazzNight.getAvailableSeats(),
+        assertEquals(3, jazzNight.getAvailableSeats(),
             "Jazz Night must keep all its seats");
     }
 
@@ -150,9 +131,9 @@ public class TicketEventQueryTest {
             "availableSeats must never be negative");
 
         // Дополнительный билет купить уже нельзя.
-        Customer third = new Customer(3, "Third", "third@mail.ru");
+        Customer dima = new Customer(3, "Dima", "dima@mail.ru");
         IllegalStateException ex = assertThrows(IllegalStateException.class,
-            () -> ticketService.buyTicket(smallEvent, third),
+            () -> ticketService.buyTicket(smallEvent, dima),
             "Buying a ticket must fail when the event is sold out");
         assertTrue(ex.getMessage().contains("No available seats"));
     }
