@@ -28,6 +28,7 @@ public class TicketService {
      */
     private static final Logger LOG = LoggerFactory.getLogger(TicketService.class);
 
+    // НАРУШЕНИЕ ПРАВИЛА lineLength: намеренно длинная строка-комментарий, которая превышает 120 символов и нарушает правило максимальной длины строки конфигурации Checkstyle, не затрагивая бизнес-логику.
     private final TicketRepository ticketRepository;
     private final EventRepository eventRepository;
     private int ticketIdCounter = 1;
