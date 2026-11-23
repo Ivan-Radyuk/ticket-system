@@ -1,12 +1,6 @@
 package model;
 
-/**
- * Ticket — билет, выданный покупателю на конкретное мероприятие.
- * Имеет жизненный цикл: ACTIVE → CANCELLED.
- *
- * Связь с Event и Customer — агрегация: билет хранит ссылки,
- * но не владеет ими «жёстко».
- */
+
 public class Ticket {
     private final int id;
     private final Event event;
@@ -41,7 +35,7 @@ public class Ticket {
         return status;
     }
 
-    /** Переводит билет в статус CANCELLED. */
+
     public void cancel() {
         this.status = TicketStatus.CANCELLED;
     }

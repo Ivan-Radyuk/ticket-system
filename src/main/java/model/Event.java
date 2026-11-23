@@ -1,18 +1,5 @@
 package model;
 
-/**
- * Event — мероприятие, на которое продаются билеты.
- *
- * Поля:
- *  - id, name, date (название/дата проведения),
- *  - totalSeats     — общая вместимость,
- *  - availableSeats — сколько мест осталось.
- *
- * Бизнес-инвариант: 0 <= availableSeats <= totalSeats.
- *
- * Изменения availableSeats делаются ТОЛЬКО через decrementSeats
- * / incrementSeats — это обеспечивает инвариант.
- */
 public class Event {
     private final int id;
     private final String name;

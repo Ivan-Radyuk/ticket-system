@@ -8,23 +8,12 @@ import repository.EventRepository;
 import java.util.List;
 
 
-/**
- * TicketService — сервисный слой системы продажи билетов.
- *
- * Журналирование (Logging) реализовано через SLF4J:
- *   Logger -> SLF4J -> Logback -> Console / Log file
- *
- * Уровни сообщений:
- *   INFO  — штатная успешная операция (билет куплен / билет отменён);
- *   WARN  — ситуация требует внимания, но не является ошибкой
- *           (например, попытка купить билет, когда свободных мест нет);
- *   ERROR — ошибка выполнения операции (не найден билет, сбой хранилища).
- */
+
 public class TicketService {
 
     /**
-     * Logger сервисного слоя — единственный источник сообщений журнала
-     * об операциях с билетами (вместо System.out.println).
+     * Logger сервисного слоя; вместо System.out.println.
+     * 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
      */
     private static final Logger LOG = LoggerFactory.getLogger(TicketService.class);
 
@@ -118,15 +107,6 @@ public class TicketService {
         return ticketRepository.findByCustomerId(customerId);
     }
 
-
-    /**
-     * Возвращает все билеты, выданные на указанное мероприятие.
-     *
-     * Добавлено в рамках ЛР №4 (индивидуальное задание, вариант 9):
-     * раньше билеты можно было получить только по покупателю,
-     * а «билеты конкретного мероприятия» получить было нельзя —
-     * хотя в репозитории такой метод уже был (findByEventId).
-     */
     public List<Ticket> getTicketsByEvent(int eventId) {
         return ticketRepository.findByEventId(eventId);
     }

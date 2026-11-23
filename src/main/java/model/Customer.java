@@ -1,9 +1,6 @@
 package model;
 
-/**
- * Customer — покупатель билета.
- * Хранит имя и email (контактные данные).
- */
+
 public class Customer {
     private final int id;
     private final String name;

@@ -7,22 +7,11 @@ import repository.*;
 import service.TicketService;
 
 
-/**
- * Main — точка входа приложения «Система продажи билетов»
- * (индивидуальное задание ЛР №5, вариант 9).
- *
- * Все сообщения выводятся через Logger (SLF4J + Logback),
- * System.out.println в проекте не используется.
- */
+
 public final class Main {
 
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
-    /**
-     * Класс точки входа: экземпляры не создаются, поэтому конструктор приватный.
-     * Это требование правила Checkstyle HideUtilityClassConstructor
-     * (а FinalClass требует, чтобы такой класс был объявлен final).
-     */
     private Main() {
     }
 
