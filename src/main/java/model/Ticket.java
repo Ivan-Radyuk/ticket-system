@@ -25,10 +25,21 @@ public class Ticket {
         this.status = TicketStatus.ACTIVE;
     }
 
-    public int getId() { return id; }
-    public Event getEvent() { return event; }
-    public Customer getCustomer() { return customer; }
-    public TicketStatus getStatus() { return status; }
+    public int getId() {
+        return id;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public TicketStatus getStatus() {
+        return status;
+    }
 
     /** Переводит билет в статус CANCELLED. */
     public void cancel() {

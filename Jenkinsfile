@@ -19,6 +19,8 @@ pipeline {
         JAVA_HOME  = 'C:\\Program Files\\Java\\jdk-17'
         MAVEN_HOME = 'C:\\Maven\\apache-maven-3.9.16'
         PATH = "C:\\Program Files\\Java\\jdk-17\\bin;C:\\Maven\\apache-maven-3.9.16\\bin;${env.PATH}"
+        // Кириллица в сообщениях Checkstyle и журнале приложения — UTF-8
+        MAVEN_OPTS = '-Dfile.encoding=UTF-8'
     }
 
     stages {
@@ -33,14 +35,31 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn -B -e clean compile'
+                bat 'chcp 65001 >nul & mvn -B -e clean compile'
+            }
+        }
+
+
+        // Этап Static Analysis (ЛР №5): проверка исходного кода Checkstyle.
+        // При нарушении правила этап падает, и следующие этапы (Test, Package)
+        // не выполняются.
+        stage('Static Analysis') {
+            steps {
+                echo 'Stage: Static Analysis -> mvn -B checkstyle:check'
+                bat 'chcp 65001 >nul & mvn -B checkstyle:check'
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'target/checkstyle-result.xml',
+                                     fingerprint: true
+                }
             }
         }
 
 
         stage('Test') {
             steps {
-                bat 'mvn -B test'
+                bat 'chcp 65001 >nul & mvn -B test'
             }
             post {
                 always {
@@ -52,7 +71,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                bat 'mvn -B package -DskipTests'
+                bat 'chcp 65001 >nul & mvn -B package -DskipTests'
             }
             post {
                 success {

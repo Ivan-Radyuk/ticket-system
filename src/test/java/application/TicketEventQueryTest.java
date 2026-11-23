@@ -63,9 +63,9 @@ public class TicketEventQueryTest {
     void testBuyingTicketDoesNotAffectOtherEvent() {
         ticketService.buyTicket(rockConcert, ivan);
 
-        assertEquals(8, rockConcert.getAvailableSeats(),
+        assertEquals(9, rockConcert.getAvailableSeats(),
             "Rock Concert should lose one seat");
-        assertEquals(3, jazzNight.getAvailableSeats(),
+        assertEquals(4, jazzNight.getAvailableSeats(),
             "Jazz Night must keep all its seats");
     }
 

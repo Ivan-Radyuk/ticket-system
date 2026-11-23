@@ -21,3 +21,12 @@ desktop.ini
 *.log
 *.tmp
 *.bak
+
+# --- Журналы приложения (Logging, Logback) ---
+logs/
+
+# --- Артефакты сборки maven-shade-plugin ---
+dependency-reduced-pom.xml
+
+# --- Материалы к сдаче лабораторной работы (не коммитятся в репозиторий) ---
+_lab5/

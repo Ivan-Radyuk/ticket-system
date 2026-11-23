@@ -28,11 +28,25 @@ public class Event {
         this.availableSeats = totalSeats;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getDate() { return date; }
-    public int getTotalSeats() { return totalSeats; }
-    public int getAvailableSeats() { return availableSeats; }
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
 
     public boolean hasAvailableSeats() {
         return availableSeats > 0;
