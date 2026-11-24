@@ -19,10 +19,7 @@
         <property name="format" value="[ \t]+$"/>
     </module>
 
-    <!-- Максимальная длина строки — 120 символов.
-         LineLength в современных версиях Checkstyle является проверкой уровня Checker
-         (в TreeWalker она запрещена), поэтому правило размещено здесь.
-         ignorePattern освобождает строки Javadoc-блока, начинающиеся с «*». -->
+    <!---->
     <module name="LineLength">
         <property name="id" value="lineLength"/>
         <property name="max" value="120"/>

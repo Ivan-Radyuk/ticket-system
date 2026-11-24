@@ -44,7 +44,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Logging: SLF4J — фасад (интерфейс), Logback — реализация -->
+        <!-- тут -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -92,14 +92,13 @@
                     </archive>
                 </configuration>
             </plugin>
-<!-- тут -->
+<!-- и тут -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${maven-checkstyle-plugin.version}</version>
                 <dependencies>
-                    <!-- Обязательно: версия Checkstyle из состава плагина (9.3)
-                         не поддерживает современный синтаксис Java. -->
+
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>

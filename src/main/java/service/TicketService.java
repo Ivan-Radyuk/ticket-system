@@ -12,7 +12,6 @@ import java.util.List;
 public class TicketService {
 
     /**
-     * Logger сервисного слоя; вместо System.out.println.
      * 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
      */
     private static final Logger LOG = LoggerFactory.getLogger(TicketService.class);
@@ -31,7 +30,7 @@ public class TicketService {
     public Ticket buyTicket(Event event, Customer customer) {
         if (!event.hasAvailableSeats()) {
             LOG.warn("Покупка билета невозможна: свободных мест нет. "
-                    + "Мероприятие={}, доступно мест={}",
+                    + "Мероприятие={}, доступно мест={} ",
                     event.getName(), event.getAvailableSeats());
             throw new IllegalStateException(
                 "No available seats for event: " + event.getName()
